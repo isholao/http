@@ -1,0 +1,18 @@
+sudo: false
+
+language: php
+php:
+  - 7.1
+  - nightly
+
+matrix:
+  allow_failures:
+    - php: nightly
+  fast_finish: true
+
+before_script:
+  - composer install --prefer-dist
+
+script:
+  - composer validate
+  - ./vendor/bin/phpunit
